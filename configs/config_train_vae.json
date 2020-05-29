@@ -1,0 +1,62 @@
+{
+  "training": {
+    "seed": 2704,
+    "loss": "ssim+l2",
+    "alpha": 0.5,
+    "beta": 0.04,
+    "margin": 120,
+    "n_epochs": 200,
+    "use_cuda": true,
+    "visible_devices": "0, 1, 2, 3"
+  },
+  "save": {
+    "study_name": "beta_0.04_margin_120_enc_lr_0.0001_dec_lr_0.005-1",
+    "output_root_dir": "./result/",
+    "save_epoch_interval": 1,
+    "n_saved": 2001,
+    "log_iter_interval": 100,
+    "n_save_images": 8
+  },
+  "dataset": {
+    "mode": "train",
+    "name": "Dataset",
+    "patient_ids": "TRAIN_PATIENT_IDS",
+    "root_dir_path": "./data/",
+    "use_augmentation": true,
+    "batch_size": 120,
+    "num_workers": 4,
+    "image_size": 256
+  },
+  "model": {
+    "input_dim": 1,
+    "z_dim": 128,
+    "enc_filters": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      512
+    ],
+    "dec_filters": [
+      512,
+      512,
+      256,
+      128,
+      64,
+      32,
+      16
+    ],
+    "enc_activation": "leaky_relu",
+    "dec_activation": "leaky_relu",
+    "dec_final_activation": "tanh",
+    "enc_spectral_norm": true,
+    "dec_spectral_norm": true,
+    "saved_E": false,
+    "saved_D": false
+  },
+  "optimizer": {
+    "enc_lr": 0.0001,
+    "dec_lr": 0.005
+  }
+}
